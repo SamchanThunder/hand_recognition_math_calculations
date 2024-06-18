@@ -1,3 +1,3 @@
 export default {
-    base: "/deploy-github/",
+    base: "/dsntech_project/",
   }
