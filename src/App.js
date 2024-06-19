@@ -148,7 +148,7 @@ function App() {
           <button onClick={summation} id="sum" name="sum">SUM</button>
           <button onClick={refresh} id="ref" name="ref">REFRESH</button>
         </div>
-        <div id="info"><u>Info: Use Abascus Number Hand Method; Side of Palm to Camera</u></div>
+        <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera</u></div>
       </header>
     </div>
   );
