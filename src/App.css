@@ -13,3 +13,9 @@
   margin-right: auto;
   top: 20%;
 }
+
+#number{
+  text-align: center;
+  font-size: 100px;
+  color: #1c540b;
+}
