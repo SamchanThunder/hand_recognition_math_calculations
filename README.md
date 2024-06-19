@@ -1,4 +1,4 @@
-Math Calculation Using Abacus Number Hand Method (Side of Palm Facing Camera)
+**Math Calculation Using Abacus Number Hand Method (Side of Palm Facing Camera)**
 
 https://samchanthunder.github.io/dsntech_project/
 
