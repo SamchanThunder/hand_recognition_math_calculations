@@ -2,8 +2,9 @@ import * as tf from "@tensorflow/tfjs";
 import * as handpose from "@tensorflow-models/handpose"
 import * as fp from "fingerpose";
 import Webcam from "react-webcam";
-import React, {useRef, useState} from 'react';
+import React, {useRef} from 'react';
 import {drawHand} from "./draw";
+import { numString } from "./strToNum.js";
 import {one,two,three,four,five,six,seven,eight,nine} from "./numbers.js";
 import './App.css';
 
@@ -11,12 +12,44 @@ function App() {
   const webcamRef = useRef(null);
   const canvasRef = useRef(null);
 
+  let arrayNumbers = [];
+  let addNumbers = [];
+  let statement = '';
+;
   const hand = async () =>{
     const x = await handpose.load();
 
     setInterval(()=>{
       isHand(x)
     }, 100)
+  };
+
+  const isNumber = async () =>{
+    setInterval(()=>{
+      if(arrayNumbers.length > 0){
+        let m = new Map();
+
+        for (const i in arrayNumbers) {
+          if (!m.get(arrayNumbers[i])) m.set(arrayNumbers[i], 1);
+          else {
+              m.set(arrayNumbers[i], m.get(arrayNumbers[i]) + 1);
+          }
+        }
+        let max = 0;
+        let predictedNumber;
+        m.forEach((val, key, map) => {
+          if (max < val) {
+              max = val;
+              predictedNumber = key;
+        }
+      });
+
+      statement += predictedNumber + " + ";
+      document.getElementById('number').innerHTML = statement;
+      addNumbers.push(predictedNumber);
+      arrayNumbers = []; 
+    }
+    }, 2000)
   };
 
   const isHand = async(x) =>{
@@ -33,6 +66,7 @@ function App() {
       canvasRef.current.height = videoHeight;
 
       const object = await x.estimateHands(video);
+      
 
       const ctx = canvasRef.current.getContext("2d");
       drawHand(object, ctx);
@@ -51,7 +85,6 @@ function App() {
         ]);
 
         const gesture = await GE.estimate(object[0].landmarks, 8.5);
-console.log(gesture);
         if (gesture.gestures !== undefined && gesture.gestures.length > 0) {
           const confidence = gesture.gestures.map(
             (prediction) => prediction.score
@@ -61,15 +94,34 @@ console.log(gesture);
           );
           
           let newNum = gesture.gestures[maxConfidence].name;
-          document.getElementById('number').innerHTML = newNum;
+          newNum = numString(newNum);
+          arrayNumbers.push(newNum);
         }
       }else{
-        document.getElementById('number').innerHTML = "No Hand Detected";
+        document.getElementById('number').innerHTML = statement;
+        arrayNumbers = [];
       }
     }
   };
 
+  function summation(){
+    let localSum = 0;
+    for(let x = 0; x < addNumbers.length; x++){
+      localSum += addNumbers[x];
+    }
+    document.getElementById('answer').innerHTML = "Answer: " + localSum;
+    
+  }
+
+  function refresh(){
+    statement = "";
+    document.getElementById('number').innerHTML = statement;
+    addNumbers = [];
+    document.getElementById('answer').innerHTML = "Answer: "
+  }
+
   hand();
+  isNumber();
 
   return (
     <div className="App">
@@ -90,7 +142,13 @@ console.log(gesture);
           }}
         />
 
-        <div id="number">No Hand Detected</div>
+        <div id="number">Loading...</div>
+        <div id="answer">Answer: </div>
+        <div id="box">
+          <button onClick={summation} id="sum" name="sum">SUM</button>
+          <button onClick={refresh} id="ref" name="ref">REFRESH</button>
+        </div>
+        <div id="info"><u>Info: Abacus Numbers; Side of Palm to Camera</u></div>
       </header>
     </div>
   );

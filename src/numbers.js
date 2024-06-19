@@ -72,7 +72,7 @@ two.addCurl(Finger.Pinky, FingerCurl.HalfCurl, 0.9);
 
 //three
 three.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1.0);
-three.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 1.0);
+three.addCurl(Finger.Thumb, FingerCurl.HalfCurl, .9);
 three.addDirection(Finger.Thumb, FingerDirection.VerticalUp, 1.0);
 three.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
 three.addDirection(Finger.Thumb, FingerDirection.DiagonalUpRight, 1.0);
@@ -258,8 +258,8 @@ eight.addDirection(Finger.Ring, FingerDirection.HorizontalLeft, 1.0);
 eight.addDirection(Finger.Ring, FingerDirection.HorizontalRight, 1.0);
 
 // pinky:
-eight.addCurl(Finger.Pinky, FingerCurl.FullCurl, 0.5);
-eight.addCurl(Finger.Pinky, FingerCurl.HalfCurl, 0.5);
+eight.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.5);
+eight.addCurl(Finger.Pinky, FingerCurl.HalfCurl, 1.5);
 
 //nine
 nine.addCurl(Finger.Thumb, FingerCurl.NoCurl, 0.5);
@@ -292,8 +292,8 @@ nine.addDirection(Finger.Ring, FingerDirection.HorizontalLeft, 1.0);
 nine.addDirection(Finger.Ring, FingerDirection.HorizontalRight, 1.0);
 
 // pinky:
-nine.addCurl(Finger.Pinky, FingerCurl.NoCurl, 2);
-nine.addDirection(Finger.Pinky, FingerDirection.VerticalUp, 1.0);
+nine.addCurl(Finger.Pinky, FingerCurl.NoCurl, 1);
+nine.addDirection(Finger.Pinky, FingerDirection.VerticalUp, .5);
 nine.addDirection(Finger.Pinky, FingerDirection.DiagonalUpLeft, 1.0);
 nine.addDirection(Finger.Pinky, FingerDirection.DiagonalUpRight, 1.0);
 nine.addDirection(Finger.Pinky, FingerDirection.HorizontalLeft, 1.0);
