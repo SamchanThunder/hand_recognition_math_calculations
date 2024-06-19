@@ -42,6 +42,15 @@
   color: rgb(9, 115, 18);
   text-align: center;
 }
+#diff{
+  width: 300px;
+  height: 70px;
+  position: relative;
+  top: 650px;
+  font-size: 40px;
+  color: rgb(9, 115, 18);
+  text-align: center;
+}
 #info{
   height: 70px;
   position: relative;

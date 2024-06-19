@@ -44,7 +44,7 @@ function App() {
         }
       });
 
-      statement += predictedNumber + " + ";
+      statement += predictedNumber + " , ";
       document.getElementById('number').innerHTML = statement;
       addNumbers.push(predictedNumber);
       arrayNumbers = []; 
@@ -113,6 +113,15 @@ function App() {
     
   }
 
+  function multiply(){
+    let localProd = 1;
+    for(let x = 0; x < addNumbers.length; x++){
+      localProd *= addNumbers[x];
+    }
+    document.getElementById('answer').innerHTML = "Answer: " + localProd;
+    
+  }
+
   function refresh(){
     statement = "";
     document.getElementById('number').innerHTML = statement;
@@ -147,6 +156,7 @@ function App() {
         <div id="box">
           <button onClick={summation} id="sum" name="sum">SUM</button>
           <button onClick={refresh} id="ref" name="ref">REFRESH</button>
+          <button onClick={multiply} id="diff" name="diff">PRODUCT</button>
         </div>
         <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera</u></div>
       </header>
