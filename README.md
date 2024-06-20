@@ -1,6 +1,6 @@
 **Math Calculations Using Abacus Number Hand Method (Side of Palm Facing Camera)**
 
-https://samchanthunder.github.io/dsntech_project/
+https://samchanthunder.github.io/hand_recognition_math_calculations/
 
 -Use of HandPose Model from Tensorflow and FingerPose
 
