@@ -1,3 +1,3 @@
 export default {
-    base: "/dsntech_project/",
+    base: "/hand_recognition_math_calculations/",
   }
