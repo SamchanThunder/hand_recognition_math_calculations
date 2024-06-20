@@ -17,7 +17,11 @@ export function numString(x){
         return "8";
     }else if(x === "nine"){
         return "9";
-    }else{
+    }else if(x === "addHand"){
         return "+";
+    }else if(x === "multiplyHand"){
+        return "x";
+    }else{
+        return "error";
     }
 }

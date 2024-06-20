@@ -10,6 +10,7 @@ export const seven = new GestureDescription('seven');
 export const eight = new GestureDescription('eight');
 export const nine = new GestureDescription('nine');
 export const addHand = new GestureDescription('addHand');
+export const multiplyHand = new GestureDescription('multiplyHand');
 
 //**one
 // thumb:
@@ -323,3 +324,32 @@ addHand.addCurl(Finger.Ring, FingerCurl.HalfCurl, 0.9);
 // pinky:
 addHand.addCurl(Finger.Pinky, FingerCurl.FullCurl, 1.0);
 addHand.addCurl(Finger.Pinky, FingerCurl.HalfCurl, 0.9);
+
+//multiply hand
+
+// thumb
+multiplyHand.addCurl(Finger.Thumb, FingerCurl.FullCurl, 1);
+multiplyHand.addCurl(Finger.Thumb, FingerCurl.HalfCurl, 1);
+multiplyHand.addDirection(Finger.Thumb, FingerDirection.VerticalUp, 1.0);
+multiplyHand.addDirection(Finger.Thumb, FingerDirection.DiagonalUpLeft, 1.0);
+multiplyHand.addDirection(Finger.Thumb, FingerDirection.DiagonalUpRight, 1.0);
+
+// index:
+multiplyHand.addCurl(Finger.Index, FingerCurl.FullCurl, 1.0);
+multiplyHand.addCurl(Finger.Index, FingerCurl.HalfCurl, 0.9);
+
+// middle:
+multiplyHand.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
+multiplyHand.addCurl(Finger.Ring, FingerCurl.HalfCurl, 0.9);
+
+// ring:
+multiplyHand.addCurl(Finger.Ring, FingerCurl.FullCurl, 1.0);
+multiplyHand.addCurl(Finger.Ring, FingerCurl.HalfCurl, 0.9);
+
+// pinky:
+multiplyHand.addCurl(Finger.Pinky, FingerCurl.NoCurl, 1.0);
+multiplyHand.addDirection(Finger.Pinky, FingerDirection.VerticalUp, 1.0);
+multiplyHand.addDirection(Finger.Pinky, FingerDirection.DiagonalUpLeft, 1.0);
+multiplyHand.addDirection(Finger.Pinky, FingerDirection.DiagonalUpRight, 1.0);
+multiplyHand.addDirection(Finger.Pinky, FingerDirection.HorizontalLeft, 1.0);
+multiplyHand.addDirection(Finger.Pinky, FingerDirection.HorizontalRight, 1.0);

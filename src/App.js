@@ -5,7 +5,7 @@ import Webcam from "react-webcam";
 import React, {useRef} from 'react';
 import {drawHand} from "./draw";
 import { numString } from "./strToNum.js";
-import {one,two,three,four,five,six,seven,eight,nine, addHand} from "./numbers.js";
+import {one,two,three,four,five,six,seven,eight,nine, addHand, multiplyHand} from "./numbers.js";
 import './App.css';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
 
   let arrayNumbers = [];
   let addNumbers = [];
+  let symbols = [];
   let statement = "";
   let holdValue = "";
 ;
@@ -44,10 +45,15 @@ function App() {
               predictedNumber = key;
         }
       });
-      if((statement.endsWith(" ") || statement === "") && predictedNumber === "+"){
+      if((statement.endsWith(" ") || statement === "") && (predictedNumber === "+" || predictedNumber === "x")){
         return;
-      }else if(statement !== "" && predictedNumber === "+"){
-        statement += " + "
+      }else if(statement !== "" && (predictedNumber === "+" || predictedNumber === "x")){
+        if(predictedNumber === "+"){
+          statement += " + "
+        }else{
+          statement += " - ";
+        }
+        symbols.push(predictedNumber);
         addNumbers.push(parseInt(holdValue));
         holdValue = "";
       }else{
@@ -91,7 +97,8 @@ function App() {
           seven,
           eight,
           nine,
-          addHand
+          addHand,
+          multiplyHand
         ]);
 
         const gesture = await GE.estimate(object[0].landmarks, 8.5);
@@ -114,31 +121,28 @@ function App() {
     }
   };
 
-  function summation(){
-    if(statement.endsWith("+ ") || !statement.includes("+")){
+  function equals(){
+    if(statement.endsWith("+ ") || !statement.includes("+") || statement.endsWith("- ") || !statement.includes("-")){
       alert("The expression you made is not complete.");
       return;
     }
-    let lastNumber = statement.split(" + ");
+    let lastNumber = statement.split(" ");
 
-    let temp = lastNumber.slice(-1)[0] ;
-    addNumbers.push(parseInt(temp));
+    let temp = lastNumber.slice(-1)[0];
 
-    let localSum = 0;
+    let localSum = parseInt(temp);
+    symbols = symbols.reverse();
+    addNumbers = addNumbers.reverse()
+    console.log(symbols);;
+    console.log(addNumbers);
     for(let x = 0; x < addNumbers.length; x++){
-      console.log("Added " + addNumbers[x])
-      localSum += addNumbers[x];
+      if (symbols[x] == "+"){
+        localSum += addNumbers[x];
+      }else{
+        localSum -= addNumbers[x];
+      }
     }
     document.getElementById('answer').innerHTML = "Answer: " + localSum;
-    
-  }
-
-  function multiply(){
-    let localProd = 1;
-    for(let x = 0; x < addNumbers.length; x++){
-      localProd *= addNumbers[x];
-    }
-    document.getElementById('answer').innerHTML = "Answer: " + localProd;
     
   }
 
@@ -146,6 +150,7 @@ function App() {
     statement = "";
     document.getElementById('number').innerHTML = statement;
     addNumbers = [];
+    symbols = [];
     document.getElementById('answer').innerHTML = "Answer: "
   }
 
@@ -174,9 +179,8 @@ function App() {
         <div id="number">Loading...</div>
         <div id="answer">Answer: </div>
         <div id="box">
-          <button onClick={summation} id="sum" name="sum">SUM</button>
+          <button onClick={equals} id="sum" name="equals">SUM</button>
           <button onClick={refresh} id="ref" name="ref">REFRESH</button>
-          <button onClick={multiply} id="diff" name="diff">PRODUCT</button>
         </div>
         <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera</u></div>
       </header>
