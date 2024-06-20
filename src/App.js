@@ -5,7 +5,7 @@ import Webcam from "react-webcam";
 import React, {useRef} from 'react';
 import {drawHand} from "./draw";
 import { numString } from "./strToNum.js";
-import {one,two,three,four,five,six,seven,eight,nine} from "./numbers.js";
+import {one,two,three,four,five,six,seven,eight,nine, addHand} from "./numbers.js";
 import './App.css';
 
 function App() {
@@ -14,7 +14,8 @@ function App() {
 
   let arrayNumbers = [];
   let addNumbers = [];
-  let statement = '';
+  let statement = "";
+  let holdValue = "";
 ;
   const hand = async () =>{
     const x = await handpose.load();
@@ -43,13 +44,21 @@ function App() {
               predictedNumber = key;
         }
       });
+      if((statement.endsWith(" ") || statement === "") && predictedNumber === "+"){
+        return;
+      }else if(statement !== "" && predictedNumber === "+"){
+        statement += " + "
+        addNumbers.push(parseInt(holdValue));
+        holdValue = "";
+      }else{
+        statement += predictedNumber;
+        holdValue += predictedNumber;
+      }
 
-      statement += predictedNumber + " , ";
-      document.getElementById('number').innerHTML = statement;
-      addNumbers.push(predictedNumber);
       arrayNumbers = []; 
+      document.getElementById('number').innerHTML = statement;
     }
-    }, 2000)
+    }, 3000)
   };
 
   const isHand = async(x) =>{
@@ -81,7 +90,8 @@ function App() {
           six,
           seven,
           eight,
-          nine
+          nine,
+          addHand
         ]);
 
         const gesture = await GE.estimate(object[0].landmarks, 8.5);
@@ -105,8 +115,18 @@ function App() {
   };
 
   function summation(){
+    if(statement.endsWith("+ ") || !statement.includes("+")){
+      alert("The expression you made is not complete.");
+      return;
+    }
+    let lastNumber = statement.split(" + ");
+
+    let temp = lastNumber.slice(-1)[0] ;
+    addNumbers.push(parseInt(temp));
+
     let localSum = 0;
     for(let x = 0; x < addNumbers.length; x++){
+      console.log("Added " + addNumbers[x])
       localSum += addNumbers[x];
     }
     document.getElementById('answer').innerHTML = "Answer: " + localSum;
