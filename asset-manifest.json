@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "/hand_recognition_math_calculations/static/css/main.8367c09b.css",
-    "main.js": "/hand_recognition_math_calculations/static/js/main.df9bba52.js",
+    "main.css": "/hand_recognition_math_calculations/static/css/main.2c539401.css",
+    "main.js": "/hand_recognition_math_calculations/static/js/main.190c886c.js",
     "static/js/453.d9dcaf9f.chunk.js": "/hand_recognition_math_calculations/static/js/453.d9dcaf9f.chunk.js",
+    "static/media/Abacus.png": "/hand_recognition_math_calculations/static/media/Abacus.d31d95e1a192c7ad2bf3.png",
     "index.html": "/hand_recognition_math_calculations/index.html",
-    "main.8367c09b.css.map": "/hand_recognition_math_calculations/static/css/main.8367c09b.css.map",
-    "main.df9bba52.js.map": "/hand_recognition_math_calculations/static/js/main.df9bba52.js.map",
+    "main.2c539401.css.map": "/hand_recognition_math_calculations/static/css/main.2c539401.css.map",
+    "main.190c886c.js.map": "/hand_recognition_math_calculations/static/js/main.190c886c.js.map",
     "453.d9dcaf9f.chunk.js.map": "/hand_recognition_math_calculations/static/js/453.d9dcaf9f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.8367c09b.css",
-    "static/js/main.df9bba52.js"
+    "static/css/main.2c539401.css",
+    "static/js/main.190c886c.js"
   ]
 }
