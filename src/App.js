@@ -161,6 +161,8 @@ function App() {
     addNumbers = [];
     symbols = [];
     document.getElementById('answer').innerHTML = "Answer: "
+    arrayNumbers = [];
+    holdValue = "";
   }
 
   hand();
