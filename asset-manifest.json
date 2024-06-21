@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/hand_recognition_math_calculations/static/css/main.2c539401.css",
-    "main.js": "/hand_recognition_math_calculations/static/js/main.190c886c.js",
+    "main.js": "/hand_recognition_math_calculations/static/js/main.a3712940.js",
     "static/js/453.d9dcaf9f.chunk.js": "/hand_recognition_math_calculations/static/js/453.d9dcaf9f.chunk.js",
     "static/media/Abacus.png": "/hand_recognition_math_calculations/static/media/Abacus.d31d95e1a192c7ad2bf3.png",
     "index.html": "/hand_recognition_math_calculations/index.html",
     "main.2c539401.css.map": "/hand_recognition_math_calculations/static/css/main.2c539401.css.map",
-    "main.190c886c.js.map": "/hand_recognition_math_calculations/static/js/main.190c886c.js.map",
+    "main.a3712940.js.map": "/hand_recognition_math_calculations/static/js/main.a3712940.js.map",
     "453.d9dcaf9f.chunk.js.map": "/hand_recognition_math_calculations/static/js/453.d9dcaf9f.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.2c539401.css",
-    "static/js/main.190c886c.js"
+    "static/js/main.a3712940.js"
   ]
 }
