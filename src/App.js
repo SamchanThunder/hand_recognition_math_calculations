@@ -122,7 +122,7 @@ function App() {
   };
 
   function equals(){
-    if(statement.endsWith("+ ") || !statement.includes("+") || statement.endsWith("- ") || !statement.includes("-")){
+    if(statement.endsWith("+ ") || statement.endsWith("- ") || (!statement.includes("-") && !statement.includes("+"))){
       alert("The expression you made is not complete.");
       return;
     }
@@ -130,19 +130,27 @@ function App() {
 
     let temp = lastNumber.slice(-1)[0];
 
-    let localSum = parseInt(temp);
-    symbols = symbols.reverse();
-    addNumbers = addNumbers.reverse()
-    console.log(symbols);;
+    temp = parseInt(temp);
+    let tempStatement = "";
+    if(addNumbers.length === symbols.length){
+      addNumbers.push(temp);
+      tempStatement = statement;
+    }
+
+    let localSum = addNumbers[0];
+    console.log(symbols);
     console.log(addNumbers);
-    for(let x = 0; x < addNumbers.length; x++){
-      if (symbols[x] == "+"){
-        localSum += addNumbers[x];
+    for(let x = 0; x < symbols.length; x++){
+      if (symbols[x] === "+"){
+        localSum += addNumbers[x+1];
       }else{
-        localSum -= addNumbers[x];
+        localSum -= addNumbers[x+1];
       }
     }
-    document.getElementById('answer').innerHTML = "Answer: " + localSum;
+
+    addNumbers.pop();
+    console.log(localSum);
+    document.getElementById('answer').innerHTML = "Answer: " + localSum.toString();
     
   }
 
@@ -179,7 +187,7 @@ function App() {
         <div id="number">Loading...</div>
         <div id="answer">Answer: </div>
         <div id="box">
-          <button onClick={equals} id="sum" name="equals">SUM</button>
+          <button onClick={equals} id="sum" name="equals">EQUALS</button>
           <button onClick={refresh} id="ref" name="ref">REFRESH</button>
         </div>
         <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera</u></div>
