@@ -5,6 +5,7 @@ import Webcam from "react-webcam";
 import React, {useRef} from 'react';
 import {drawHand} from "./draw";
 import { numString } from "./strToNum.js";
+import Abacus from "./Abacus.png";
 import {one,two,three,four,five,six,seven,eight,nine, addHand, multiplyHand} from "./numbers.js";
 import './App.css';
 
@@ -190,7 +191,8 @@ function App() {
           <button onClick={equals} id="sum" name="equals">EQUALS</button>
           <button onClick={refresh} id="ref" name="ref">REFRESH</button>
         </div>
-        <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera</u></div>
+        <img id="img1" src={Abacus} width="350" height="500" />
+        <div id="info"><u>Info: Use Abacus Number Hand Method; Side of Palm to Camera; Fist is Add; Only Pinky Up is Subtract</u></div>
       </header>
     </div>
   );

@@ -79,3 +79,9 @@
   color: rgb(78, 189, 78);
   text-align: center;
 }
+
+#img1{
+  position: absolute;
+  top: 100px;
+  z-index: -1;
+}
