@@ -1,4 +1,4 @@
-**Math Calculations Using Abacus Number Hand Method (Side of Palm Facing Camera for best results)** -Use of HandPose Model from Tensorflow and FingerPose
+**Math Calculations Using Abacus Number Hand Method (Side of Palm Facing Camera for best results)** - Use of HandPose Model from Tensorflow and FingerPose
 
 **Link:** https://samchanthunder.github.io/hand_recognition_math_calculations/
 
